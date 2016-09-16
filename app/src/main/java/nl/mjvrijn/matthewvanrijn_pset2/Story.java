@@ -23,7 +23,7 @@ public class Story implements Serializable {
         // Populate the array of word types
         Matcher m = expression.matcher(story);
         while(m.find()) {
-            types.add(m.group().replace("-", " "));
+            types.add(m.group().replace("-", " ").toLowerCase());
         }
     }
 

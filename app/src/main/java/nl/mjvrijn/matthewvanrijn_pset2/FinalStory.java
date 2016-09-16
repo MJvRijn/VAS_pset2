@@ -24,7 +24,7 @@ public class FinalStory extends AppCompatActivity {
         Story story = (Story) i.getSerializableExtra("story");
 
         TextView text = (TextView) findViewById(R.id.finalStoryText);
-        text.setText(Html.fromHtml(story.getStory()+story.getStory()+story.getStory()+story.getStory()));
+        text.setText(Html.fromHtml(story.getStory()));
     }
 
     @Override
