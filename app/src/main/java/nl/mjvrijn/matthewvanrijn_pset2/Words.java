@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -36,7 +38,20 @@ public class Words extends AppCompatActivity {
             story = new Story(scanner);
         }
 
+        // Setup ENTER key listener for continuing to the next word
         field = (EditText) findViewById(R.id.wordField);
+        field.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_NEXT) {
+                    submitWord(field);
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+
         nextWord();
     }
 
@@ -78,7 +93,6 @@ public class Words extends AppCompatActivity {
      * fill in it continues to the story display activity.
      */
     private void nextWord() {
-        System.out.println(story.numLeft());
         if(story.numLeft() == 0) {  // Continue to display
             Intent intent = new Intent(Words.this, FinalStory.class);
             intent.putExtra("story", story);

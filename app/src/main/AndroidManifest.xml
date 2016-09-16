@@ -19,7 +19,8 @@
             android:name=".Words"
             android:label="@string/title_activity_words"
             android:parentActivityName=".Intro"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateVisible">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="nl.mjvrijn.matthewvanrijn_pset2.Intro" />
