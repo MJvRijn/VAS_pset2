@@ -26,13 +26,6 @@ public class Words extends AppCompatActivity {
         // Restore from rotation
         if(savedInstanceState != null) {
             story = (Story) savedInstanceState.getSerializable("story");
-
-        // Return from story display
-//        } else if(getIntent().getSerializableExtra("story") != null) {
-//
-//            story = (Story) getIntent().getSerializableExtra("story");
-//            story.goBack();
-//        // Start fresh
         } else {
             Scanner scanner = new Scanner(getResources().openRawResource(R.raw.madlib1_tarzan));
             story = new Story(scanner);

@@ -27,22 +27,13 @@ public class FinalStory extends AppCompatActivity {
         text.setText(Html.fromHtml(story.getStory()+story.getStory()+story.getStory()+story.getStory()));
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        Intent i = new Intent(FinalStory.this, Words.class);
-//        i.putExtra("story", getIntent().getSerializableExtra("story"));
-//        startActivity(i);
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == android.R.id.home) {
+            finish();
+        }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        if(item.getItemId() == android.R.id.home) {
-//            Intent i = new Intent(FinalStory.this, Words.class);
-//            i.putExtra("story", getIntent().getSerializableExtra("story"));
-//            startActivity(i);
-//        }
-//
-//        return true;
-//    }
+        return true;
+    }
 
 }
