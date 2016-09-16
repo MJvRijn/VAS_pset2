@@ -37,4 +37,12 @@
         android:layout_centerHorizontal="true"
         android:onClick="submitWord" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/wordsLeft"
+        android:layout_below="@+id/wordSubmit"
+        android:layout_centerHorizontal="true"
+        android:textSize="10sp" />
+
 </RelativeLayout>

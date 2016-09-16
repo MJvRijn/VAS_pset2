@@ -14,6 +14,8 @@ public class Intro extends AppCompatActivity {
         setContentView(R.layout.activity_intro);
         Toolbar actionBar = (Toolbar) findViewById(R.id.action_bar);
         setSupportActionBar(actionBar);
+
+        setTitle("Mad Libs");
     }
 
     public void nextStep(View view) {

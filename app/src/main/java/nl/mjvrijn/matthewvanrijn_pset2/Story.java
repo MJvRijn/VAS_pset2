@@ -1,48 +1,69 @@
 package nl.mjvrijn.matthewvanrijn_pset2;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Story implements Serializable {
 
-    private boolean complete = false;
-    private Pattern neededWord = Pattern.compile("<(.*?)>");
-    private String story;
-    private String nextType;
+    private Pattern expression = Pattern.compile("<(.*?)>");
+    private ArrayList<String> words = new ArrayList<>();
+    private ArrayList<String> types = new ArrayList<>();
+    private int index = 0;
+    private String story = "";
 
     public Story(Scanner s) {
-        story = s.nextLine();
-        setNextType();
+        // Read the entire file into a string
+        while(s.hasNextLine()) {
+            story += s.nextLine().trim() + " ";
+        }
+
+        // Populate the array of word types
+        Matcher m = expression.matcher(story);
+        while(m.find()) {
+            types.add(m.group().replace("-", " "));
+        }
     }
 
     public void putWord(String word) {
-        if(!complete) {
-            story = story.replaceFirst(neededWord.pattern(), word);
+        if(index < types.size()) {
+            words.add(index, word);
         }
-
-        setNextType();
+        index++;
     }
 
-    public String getNextType() {
-        return nextType;
+    public boolean goBack() {
+        if(index > 0) {
+            index--;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public String getType() {
+        return types.get(index);
+    }
+
+    public String getWord() {
+        if(words.size() > index) {
+            return words.get(index);
+        } else {
+            return "";
+        }
+    }
+
+    public int numLeft() {
+        return types.size() - index;
     }
 
     public String getStory() {
-        return story;
-    }
-
-    public boolean isComplete() {
-        return complete;
-    }
-
-    private void setNextType() {
-        Matcher matcher = neededWord.matcher(story);
-        if(matcher.find()) {
-            nextType =  matcher.group(1).replace('-', ' ');
-        } else {
-            complete = true;
+        String finalStory = story;
+        for(int i = 0; i<words.size(); i++) {
+            finalStory = finalStory.replaceFirst(expression.pattern(), "@"+words.get(i)+"*");
         }
+        return finalStory.replace("@", "<b>").replace("*", "</b>");
     }
 }
