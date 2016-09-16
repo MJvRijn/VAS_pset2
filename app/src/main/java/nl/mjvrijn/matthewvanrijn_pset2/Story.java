@@ -1,10 +1,11 @@
 package nl.mjvrijn.matthewvanrijn_pset2;
 
+import java.io.Serializable;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Story {
+public class Story implements Serializable {
 
     private boolean complete = false;
     private Pattern neededWord = Pattern.compile("<(.*?)>");

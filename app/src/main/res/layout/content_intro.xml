@@ -9,32 +9,22 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="nl.mjvrijn.matthewvanrijn_pset2.Words"
-    tools:showIn="@layout/activity_words">
-
-    <EditText
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/wordField"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true" />
+    tools:context="nl.mjvrijn.matthewvanrijn_pset2.Intro"
+    tools:showIn="@layout/activity_intro">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Fill in the words to complete the story!"
-        android:id="@+id/textView2"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:text="Intro"
+        android:id="@+id/textView" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OK"
-        android:id="@+id/wordSubmit"
-        android:layout_below="@+id/wordField"
-        android:layout_centerHorizontal="true"
-        android:onClick="submitWord" />
+        android:text="Get Started"
+        android:id="@+id/button"
+        android:onClick="nextStep"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>

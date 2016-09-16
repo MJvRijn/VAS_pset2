@@ -2,4 +2,5 @@
     <string name="app_name">matthewvanrijn-pset2</string>
     <string name="title_activity_words">Words</string>
     <string name="title_activity_final_story">FinalStory</string>
+    <string name="title_activity_temp">Temp</string>
 </resources>
