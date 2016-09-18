@@ -9,8 +9,8 @@ import java.util.regex.Pattern;
 public class Story implements Serializable {
 
     private Pattern expression = Pattern.compile("<(.*?)>");
-    private ArrayList<String> words = new ArrayList<>();
     private ArrayList<String> types = new ArrayList<>();
+    private String[] words;
     private int index = 0;
     private String story = "";
 
@@ -25,15 +25,20 @@ public class Story implements Serializable {
         while(m.find()) {
             types.add(m.group().replace("-", " ").toLowerCase());
         }
+
+        // Initialise word array
+        words = new String[types.size()];
     }
 
+    /* Add a word at the current index and increment the index */
     public void putWord(String word) {
-        if(index < types.size()) {
-            words.add(index, word);
+        if(index < words.length) {
+            words[index] = word;
         }
         index++;
     }
 
+    /* Decrement the current index if it is above 0 */
     public boolean goBack() {
         if(index > 0) {
             index--;
@@ -43,26 +48,30 @@ public class Story implements Serializable {
         }
     }
 
+    /* Return the type of the desired word for this index */
     public String getType() {
         return types.get(index);
     }
 
+    /* Return the previously chosen word for this index if present, else return an empty string. */
     public String getWord() {
-        if(words.size() > index) {
-            return words.get(index);
+        if(words[index] != null) {
+            return words[index];
         } else {
             return "";
         }
     }
 
+    /* Return the number of words still to be filled */
     public int numLeft() {
         return types.size() - index;
     }
 
+    /* Merge the chosen words and the story template to create the final story. */
     public String getStory() {
         String finalStory = story;
-        for(int i = 0; i<words.size(); i++) {
-            finalStory = finalStory.replaceFirst(expression.pattern(), "@"+words.get(i)+"*");
+        for(String word : words) {
+            finalStory = finalStory.replaceFirst(expression.pattern(), "@"+word+"*");
         }
         return finalStory.replace("@", "<b>").replace("*", "</b>");
     }

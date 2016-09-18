@@ -8,4 +8,6 @@
     <string name="madlib3_name">Clothes</string>
     <string name="madlib4_name">Dance</string>
     <string name="logo_description">Mad Libs Logo</string>
+    <string name="words_prompt">Fill in the words to complete the story!</string>
+    <string name="words_submit_text">OK</string>
 </resources>
