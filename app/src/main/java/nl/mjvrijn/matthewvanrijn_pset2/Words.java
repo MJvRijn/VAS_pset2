@@ -14,8 +14,8 @@ import java.util.Scanner;
 
 public class Words extends AppCompatActivity {
 
-    Story story;
-    EditText field;
+    private Story story;
+    private EditText field;
 
     /* There are two situations in which onCreate is called. The first is when coming from the main
      * menu, the second is when the screen is rotated. When the screen is rotated the state of the
